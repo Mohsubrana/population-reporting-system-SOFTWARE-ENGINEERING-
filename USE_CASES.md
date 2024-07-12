@@ -54,7 +54,7 @@ Success:
 precondition: user can view the cities in the selected countries
 
 Use case: View Cities in a district by population#
-Necessary Condition: the user is logged on to the application
+Necessary Condition: the user is logged on to the application.
 success: 
 - user selects a district from the list of available ones
 - system grabs the list of cities in the selected district
