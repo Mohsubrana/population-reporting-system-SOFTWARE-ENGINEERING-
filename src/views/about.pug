@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title About - Population Information System
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      nav
+        .container
+          .logo
+            h1 Population Info
+          ul.nav-links
+            li
+              a(href='/') Home
+            li
+              a(href='/cities') Cities
+            li
+              a(href='/countries') Countries
+    main
+      section.about
+        .container
+          h1 About Population Data
+          p Here is some information about the population data.
+          table
+            thead
+              tr
+                th Code
+                th Name
+                th Continent
+                th Region
+                th Population
+                th Capital
+            tbody
+              each country in countries
+                tr
+                  td= country.Code
+                  td= country.Name
+                  td= country.Continent
+                  td= country.Region
+                  td= country.Population
+                  td= country.Capital
+    footer
+      .container
+        p &copy; 2024 Population Information System
