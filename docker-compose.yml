@@ -2,22 +2,31 @@ version: '3.8'
 
 services:
   db:
+    # I'm using the MySQL 5.7 image for the database service
     image: mysql:5.7
     environment:
+      # Setting the MySQL root password for the database
       MYSQL_ROOT_PASSWORD: password
+      # Creating a database named 'world' when the container starts
       MYSQL_DATABASE: world
     ports:
+      # Mapping port 3306 of the host to port 3306 of the container for MySQL access
       - "3306:3306"
     volumes:
+      # Initializing the database with a SQL file located in the current directory
       - ./world.sql:/docker-entrypoint-initdb.d/world.sql
 
   app:
+    # Building the application service from the current directory's Dockerfile
     build: .
     ports:
+      # Mapping port 3000 of the host to port 3000 of the container for app access
       - "3000:3000"
     depends_on:
+      # Ensuring the database service starts before the application service
       - db
     environment:
+      # Configuring the application to connect to the database service
       DB_HOST: db
       DB_USER: root
       DB_PASSWORD: password
